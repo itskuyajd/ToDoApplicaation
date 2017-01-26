@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<link rel="stylesheet" type="text/css" href="css.css">
+    <meta charset="UTF-8">
+    <title>ToDo Application</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+        }
+    </style>
+</head><center><br><br><br><br><br><br><br><br><br>
+<body ng-app="todoApp">
+<h1>ToDo Task Application</h1>
+<div ng-controller="TodoCtrl">
+    <div>
+        <input type="text" placeholder="Enter a Task" ng-model="newTodo.text" ng-keypress="keypress()" autofocus="true">
+        <input type="hidden" value="false" ng-model="newTodo.completed">
+        <button ng-click="add()">Add Task</button>
+        <button ng-click="clearCompleted()">Clear Completed</button>
+    </div>
+    <br>
+    <div ng-repeat="item in todos">
+        <input type="checkbox" ng-model="item.completed">
+        <span ng-bind="item.text" ng-class="{'completed': item.completed}"></span>
+        <button ng-click="delete($index)">cleared</button>
+    </div>
+    <br>
+    
+</div>
+</body></center>
+<script src="app/lib/angular.min.js"></script>
+<script src="app/scripts/todo/todo.module.js"></script>
+<script src="app/scripts/todo/controllers/todo.controller.js"></script>
+<script src="app/scripts/todo/services/todo.service.js"></script>
+<script src="app/scripts/app.js"></script>
+</body>
+</html>
